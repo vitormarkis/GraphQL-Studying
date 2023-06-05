@@ -1,4 +1,5 @@
 import { CreateAppointmentInput } from "@/dtos/inputs/create-appointment-input";
+import { Appointment } from "@/dtos/models/appointment-model";
 import { Arg, Mutation, Query, Resolver } from "type-graphql";
 
 @Resolver()
@@ -8,7 +9,7 @@ export class AppointmentsResolver {
     return "Hello World";
   }
 
-  @Mutation(() => Boolean)
+  @Mutation(() => Appointment)
   async createAppointment(
     @Arg("data", () => CreateAppointmentInput) data: CreateAppointmentInput
   ): Promise<boolean> {

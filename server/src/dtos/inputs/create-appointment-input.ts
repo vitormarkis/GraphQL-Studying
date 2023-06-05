@@ -6,7 +6,7 @@ export class CreateAppointmentInput {
   customerId: string;
 
   @Field(() => Date)
-  startsWith: Date;
+  startsAt: Date;
 
   @Field(() => Date)
   endsAt: Date;
