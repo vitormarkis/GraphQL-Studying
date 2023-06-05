@@ -2,11 +2,13 @@ import { CreateAppointmentInput } from "@/dtos/inputs/create-appointment-input";
 import { Appointment } from "@/dtos/models/appointment-model";
 import { Arg, Mutation, Query, Resolver } from "type-graphql";
 
+const db_Appointments = [] as Appointment[];
+
 @Resolver()
 export class AppointmentsResolver {
-  @Query(() => String)
+  @Query(() => [Appointment])
   async getAppointments() {
-    return "Hello World";
+    return db_Appointments;
   }
 
   @Mutation(() => Appointment)
@@ -17,6 +19,8 @@ export class AppointmentsResolver {
       startsAt: data.startsAt,
       endsAt: data.endsAt,
     };
+
+    db_Appointments.push(newAppointment);
 
     return newAppointment;
   }
