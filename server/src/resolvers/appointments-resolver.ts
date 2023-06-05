@@ -12,7 +12,12 @@ export class AppointmentsResolver {
   @Mutation(() => Appointment)
   async createAppointment(
     @Arg("data", () => CreateAppointmentInput) data: CreateAppointmentInput
-  ): Promise<boolean> {
-    return true;
+  ) {
+    const newAppointment: Appointment = {
+      startsAt: data.startsAt,
+      endsAt: data.endsAt,
+    };
+
+    return newAppointment;
   }
 }
